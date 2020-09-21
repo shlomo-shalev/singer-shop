@@ -1,0 +1,45 @@
+// Breadcrumb
+.breadcrumb-nav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  margin-bottom: 3.5rem;
+}
+
+.breadcrumb {
+  margin-bottom: 0;
+  padding: 1.25rem 0;
+  border-radius: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item {
+  text-transform: uppercase;
+  font: 500 1.2rem $second-font-family;
+  letter-spacing: 0.025em;
+
+  i {
+    font-size: 1.4rem;
+  }
+}
+
+.breadcrumb-item+.breadcrumb-item {
+  padding-left: 1rem;
+}
+
+.breadcrumb-item+.breadcrumb-item:before {
+  content: '\e81a';
+  font-family: 'porto';
+  padding-right: 1rem;
+  font-size: 1.4rem;
+  vertical-align: middle;
+  margin-top: -.5rem;
+  color: #8e8e8e;
+}
+
+.breadcrumb-item a,
+.breadcrumb-item.active {
+  color: #8e8e8e;
+}

@@ -1,0 +1,30 @@
+// Tabs
+.nav.nav-tabs {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid #eaeaea;
+
+  .nav-item { 
+    margin-top: 2rem;
+
+    .nav-link {
+      padding: 0 2rem 2rem;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      color: $primary-color-dark;
+      font: 600 1.6rem / 1 $font-family;
+      letter-spacing: -.01rem;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &.show .nav-link,
+    .nav-link.active {
+      border-bottom-color: $primary-color;
+      color: $primary-color;
+      background-color: transparent;
+    }
+  }
+}

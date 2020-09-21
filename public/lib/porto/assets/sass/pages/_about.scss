@@ -1,0 +1,79 @@
+// About
+.about-section {
+  padding: 3rem 0 3rem;
+  font-size: 1.5rem;
+  line-height: 2;
+
+  .col-lg-7 {
+    p {
+      padding-right: 2rem;
+
+      &:last-child {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}
+
+.testimonials-slider {
+  blockquote {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &.owl-theme .owl-nav.disabled + .owl-dots {
+    margin-top: 0;
+  }
+}
+
+.gallery-section {
+  padding: 5.5rem 0 4rem;
+  background-color: #f1f1f1;
+}
+
+.gallery-item {
+  display: block;
+  margin-bottom: 1.5rem;
+
+  img {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+.company-section {
+  padding: 6rem 0 3rem;
+  font-size: 1.5rem;
+  line-height: 1.8;
+
+  img {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  p + .subtitle {
+    margin-top: 4rem;
+  }
+}
+
+.features-section {
+  padding: 4.5rem 0 1rem;
+  background-color: #f1f1f1;
+}
+
+@include mq(md) {
+  .gallery-item {
+    margin-bottom: 2rem;
+  }
+
+  .features-section {
+    padding-top: 5.8rem;
+    padding-bottom: 2.2rem;
+  }
+}
+
+@include mq(lg) {
+}
+
+@include mq(xl) {
+}

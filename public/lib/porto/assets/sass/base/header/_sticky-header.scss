@@ -1,0 +1,126 @@
+// Sticky Header
+@-webkit-keyframes fixedHeader {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-60px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes fixedHeader {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sticky-header {
+  position: relative;
+  &.fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    z-index: 1040;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
+    -webkit-animation-name: fixedHeader;
+    animation-name: fixedHeader;
+
+    .main-nav {
+      width: auto;
+      background-color: transparent;
+    }
+
+    .menu {
+      > li.float-right {
+        > a {
+          background-color: transparent;
+        }
+      }
+
+      > li {
+        > a {
+          color: black;
+          padding-top: .55rem;
+          padding-bottom: .55rem;
+        }
+      }
+
+      > li:hover,
+      > li.show,
+      > li.active {
+        > a {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .logo,
+    .cart-dropdown {
+      display: block;
+    }
+  }
+
+  &.fixed-nav {
+    position: fixed;
+    top: 93px;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    z-index: 1039;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
+    -webkit-animation-name: fixedHeader;
+    animation-name: fixedHeader;
+
+    .container {
+      margin: 0 auto;
+      padding-left: 1.5rem;
+    }
+  }
+
+  .buy-effect a {
+    padding-left: .5rem;
+  }
+}
+
+.sticky-header.scroll {
+  margin-right: 17px;
+}
+
+@include mq(lg, max) {
+  .sticky-header.fixed-nav {
+    top: 0;
+  }
+}
+
+@include mq(md, max) {
+  .sticky-header.fixed {
+    display: none;
+  }
+}
+
+@include mq(sm, max) {
+  .sticky-header.fixed-nav {
+    display: none;
+  }
+}
+
+@include mq(xl, max) {
+  .sticky-header.fixed .header-left ul {
+    display: none;
+  }
+}

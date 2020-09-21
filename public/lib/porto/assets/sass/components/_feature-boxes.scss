@@ -1,0 +1,36 @@
+// Feature Box
+.feature-box {
+  width: 100%;
+  color: #4a505e;
+  margin-bottom: 3rem;
+  @include clearfix;
+
+  i {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+    font-size: 5.5rem;
+    width: 7.5rem;
+  }
+
+  h3 {
+    color: #21293c;
+    font: 700 1.4rem/1.1 $second-font-family;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1.3rem;
+  }
+}
+
+.feature-box-content {
+  margin-left: 9rem;
+  color: #7b858a;
+  font-size: 1.5rem;
+  line-height: 1.8;
+}
