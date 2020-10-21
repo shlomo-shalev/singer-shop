@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use DB, Session, Hash;
 
-class User extends Model
-{
+class User extends Model {
 
     static public function getUsers($cms = false){
 

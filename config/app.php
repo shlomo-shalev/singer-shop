@@ -234,8 +234,6 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Rapley' => App\Providers\RapleyServiceProvider::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Rapley' => App\Providers\RapleyServiceProvider::class,
-
     ],
 
 ];
