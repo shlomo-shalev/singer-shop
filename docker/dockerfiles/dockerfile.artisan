@@ -1,0 +1,21 @@
+# FROM composer:2.4.2 as composer
+
+# WORKDIR /var/www/html
+
+# COPY composer.json .
+# COPY composer.lock .
+
+# RUN composer --ignore-platform-reqs install
+
+FROM php:7.2-fpm-alpine
+
+WORKDIR /var/www/html
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+COPY . .
+
+# COPY --from=composer /var/www/html/vendor .
+
+
+ENTRYPOINT [ "php", "artisan" ]

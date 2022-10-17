@@ -1,0 +1,60 @@
+version: '3.8'
+services:
+  server: 
+    build: 
+      context: .
+      dockerfile: ./docker/dockerfiles/dockerfile.nginx
+    volumes:
+      - '.:/var/www/html'
+    ports:
+      - '80:80'
+    platform: 'arm64'
+    depends_on:
+      - mysql
+      - php_fpm
+      - phpmyadmin
+  php_fpm:
+    build: 
+      context: .
+      dockerfile: ./docker/dockerfiles/dockerfile.app
+    volumes:
+      - '.:/var/www/html'
+    environment:
+      CONTAINER_ROLE: php_fpm
+  mysql: 
+    image: 'mysql/mysql-server:8.0'
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - 'mysql_data:/var/www/html'
+      - './docker/create-database.sh:/docker-entrypoint-initdb.d/create-database.sh'
+      - './docker/mysql.conf:/etc/my.cnf'
+  artisan:
+    build: 
+      context: .
+      dockerfile: ./docker/dockerfiles/dockerfile.artisan
+    image: singershop-app
+    volumes:
+      - '.:/var/www/html'
+  composer:
+    build: 
+      context: .
+      dockerfile: ./docker/dockerfiles/dockerfile.composer
+    image: singershop-composer
+    volumes:
+      - '.:/var/www/html'
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+      
+    ports:
+      - '8080:80'
+volumes:
+  mysql_data:

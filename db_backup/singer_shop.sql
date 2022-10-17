@@ -28,7 +28,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
-CREATE TABLE `categories` (
+USE catalog;
+
+CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
@@ -44,7 +46,7 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `title`, `description`, `image`, `url`, `visibility`, `is_open`, `updated_at`, `created_at`) VALUES
+INSERT IGNORE `categories` (`id`, `title`, `description`, `image`, `url`, `visibility`, `is_open`, `updated_at`, `created_at`) VALUES
 (2, 'Songs', 'Songs Rapley wrote during his career, all songs are available for immediate purchase.', '2020.08.06.16.46.08-cUDTl5s-songs.jpg', 'songs', 1, 1, '2020-09-05 10:28:21', '2020-07-06 10:42:33'),
 (3, 'Hats', 'Hats with name of Rapley, You can purchase a hat with a photo of Rapley through our customer service.', '2020.09.05.21.28.38-qlWZQZv-claudio-schwarz-purzlbaum-PH8GUKG-Do0-unsplash.jpg', 'hats', 1, 1, '2020-09-05 21:28:44', '2020-07-06 10:47:20'),
 (4, 'Shirts', 'T-shirts with a picture of Rapley on which, You can purchase the shirts in one of the range of colors we offer..', '2020.09.06.08.52.59-8Q5TsZX-2020.08.06.16.45.47-CLnXERe-shirts.jpg', 'shirts', 1, 1, '2020-09-06 08:52:59', '2020-07-06 10:56:34'),
@@ -56,7 +58,7 @@ INSERT INTO `categories` (`id`, `title`, `description`, `image`, `url`, `visibil
 -- Table structure for table `contents`
 --
 
-CREATE TABLE `contents` (
+CREATE TABLE IF NOT EXISTS `contents` (
   `id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `cntitle` varchar(255) NOT NULL,
@@ -70,7 +72,7 @@ CREATE TABLE `contents` (
 -- Dumping data for table `contents`
 --
 
-INSERT INTO `contents` (`id`, `menu_id`, `cntitle`, `cndescription`, `visibility`, `updated_at`, `created_at`) VALUES
+INSERT IGNORE `contents` (`id`, `menu_id`, `cntitle`, `cndescription`, `visibility`, `updated_at`, `created_at`) VALUES
 (1, 5, 'About Rapley', '<p>Raphael is a singer who loves to sing rap, he was born in California and from childhood his parents taught him to play the guitar. Since then to this day Rapley has made many appearances and released over 100 songs he has written.</p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p>', 1, '2020-09-05 09:50:37', '2020-07-21 14:26:51'),
 (2, 6, 'Contact', '<p><span style=\"background-color: rgb(255, 0, 0);\"><font color=\"#ffffff\"><b>Business reasons will only be answered:\r\n</b></font></span></p><p><b>Email: <a href=\"mailto:info@rapley.com\" class=\"site-color\">info@rapley.com</a>\r\n</b></p><p><b>Phone: <a href=\"tel:+19453486475\" class=\"site-color\">+19453486475</a></b></p><p><b><br></b></p><p><b><br></b></p><p><b><br></b></p><p><br></p><p><b><br></b></p><p><b><br></b></p><p><b><br></b></p><p><b><br></b></p>', 1, '2020-08-12 14:26:47', '2020-07-21 14:27:08'),
 (9, 5, 'Demo To About', '<p><font color=\"#000000\" style=\"background-color: rgb(255, 255, 0);\">demo</font></p>', 0, '2020-08-03 09:24:13', '2020-08-03 08:38:54'),
@@ -83,7 +85,7 @@ INSERT INTO `contents` (`id`, `menu_id`, `cntitle`, `cndescription`, `visibility
 -- Table structure for table `menus`
 --
 
-CREATE TABLE `menus` (
+CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -98,7 +100,7 @@ CREATE TABLE `menus` (
 -- Dumping data for table `menus`
 --
 
-INSERT INTO `menus` (`id`, `link`, `url`, `title`, `visibility`, `is_open`, `updated_at`, `created_at`) VALUES
+INSERT IGNORE `menus` (`id`, `link`, `url`, `title`, `visibility`, `is_open`, `updated_at`, `created_at`) VALUES
 (5, 'about', 'about', 'about', 1, 1, '2020-09-05 09:49:19', '2020-07-19 17:31:24'),
 (6, 'Contact', 'contact', 'Contact', 1, 1, '2020-09-04 19:05:45', '2020-07-19 17:31:54'),
 (25, 'demo2', 'demo2', 'demo2', 0, 1, '2020-08-03 09:18:41', '2020-08-03 09:17:12'),
@@ -110,7 +112,7 @@ INSERT INTO `menus` (`id`, `link`, `url`, `title`, `visibility`, `is_open`, `upd
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `orders` (
+CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `total` int(11) NOT NULL,
@@ -123,7 +125,7 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `total`, `data`, `updated_at`, `created_at`) VALUES
+INSERT IGNORE `orders` (`id`, `user_id`, `total`, `data`, `updated_at`, `created_at`) VALUES
 (1, 16, 30, 'a:1:{i:8;a:6:{s:2:\"id\";i:8;s:4:\"name\";s:14:\"American Style\";s:5:\"price\";d:30;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";a:2:{s:5:\"image\";s:46:\"2020.08.12.10.00.39-XkwKPCF-american-style.jpg\";s:3:\"url\";s:24:\"shop/hats/american-style\";}s:10:\"conditions\";a:0:{}}}', '2020-08-14 19:10:53', '2020-08-14 19:10:53'),
 (2, 16, 168, 'a:9:{i:13;a:6:{s:2:\"id\";i:13;s:4:\"name\";s:10:\"Pink Shirt\";s:5:\"price\";d:9;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";a:2:{s:5:\"image\";s:42:\"2020.08.12.10.21.52-PnBQjND-pink-shirt.jpg\";s:3:\"url\";s:22:\"shop/shirts/pink-shirt\";}s:10:\"conditions\";a:0:{}}i:10;a:6:{s:2:\"id\";i:10;s:4:\"name\";s:11:\"White Shirt\";s:5:\"price\";d:5;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";a:2:{s:5:\"image\";s:71:\"2020.08.12.10.21.31-tzcgczW-2020.08.12.10.13.35-o1oWLhf-white-shirt.jpg\";s:3:\"url\";s:23:\"shop/shirts/white-shirt\";}s:10:\"conditions\";a:0:{}}i:11;a:6:{s:2:\"id\";i:11;s:4:\"name\";s:11:\"Black Shirt\";s:5:\"price\";d:7;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";a:2:{s:5:\"image\";s:43:\"2020.08.12.10.21.42-sqQkQfe-black-shirt.jpg\";s:3:\"url\";s:23:\"shop/shirts/black-shirt\";}s:10:\"conditions\";a:0:{}}i:8;a:6:{s:2:\"id\";i:8;s:4:\"name\";s:14:\"American Style\";s:5:\"price\";d:30;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";a:2:{s:5:\"image\";s:46:\"2020.08.12.10.00.39-XkwKPCF-american-style.jpg\";s:3:\"url\";s:24:\"shop/hats/american-style\";}s:10:\"conditions\";a:0:{}}i:9;a:6:{s:2:\"id\";i:9;s:4:\"name\";s:11:\"Cow Boy Hat\";s:5:\"price\";d:12.43;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";a:2:{s:5:\"image\";s:43:\"2020.08.12.10.00.48-THIUroJ-cow-boy-hat.jpg\";s:3:\"url\";s:21:\"shop/hats/cow-boy-hat\";}s:10:\"conditions\";a:0:{}}i:5;a:6:{s:2:\"id\";i:5;s:4:\"name\";s:10:\"Summer Hat\";s:5:\"price\";d:10;s:8:\"quantity\";s:1:\"1\";s:10:\"attributes\";a:2:{s:5:\"image\";s:42:\"2020.08.12.10.00.28-IN7Z2st-summer-hat.jpg\";s:3:\"url\";s:20:\"shop/hats/summer-hat\";}s:10:\"conditions\";a:0:{}}i:4;a:6:{s:2:\"id\";i:4;s:4:\"name\";s:15:\"A New Adventure\";s:5:\"price\";d:13.56;s:8:\"quantity\";i:2;s:10:\"attributes\";a:2:{s:5:\"image\";s:47:\"2020.08.12.10.21.08-pjl1s2d-a-new-adventure.jpg\";s:3:\"url\";s:26:\"shop/songs/a-new-adventure\";}s:10:\"conditions\";a:0:{}}i:2;a:6:{s:2:\"id\";i:2;s:4:\"name\";s:5:\"Smile\";s:5:\"price\";d:10;s:8:\"quantity\";i:2;s:10:\"attributes\";a:2:{s:5:\"image\";s:37:\"2020.08.12.10.20.49-Zhf80Wq-smile.jpg\";s:3:\"url\";s:16:\"shop/songs/smile\";}s:10:\"conditions\";a:0:{}}i:3;a:6:{s:2:\"id\";i:3;s:4:\"name\";s:11:\"One Morning\";s:5:\"price\";d:15.7;s:8:\"quantity\";i:3;s:10:\"attributes\";a:2:{s:5:\"image\";s:43:\"2020.08.12.10.20.59-Ukwt1Fk-one-morning.jpg\";s:3:\"url\";s:22:\"shop/songs/one-morning\";}s:10:\"conditions\";a:0:{}}}', '2020-08-14 19:12:24', '2020-08-14 19:12:24'),
 (3, 4, 270, 'a:3:{i:2;a:6:{s:2:\"id\";i:2;s:4:\"name\";s:5:\"Smile\";s:5:\"price\";d:10;s:8:\"quantity\";s:2:\"10\";s:10:\"attributes\";a:2:{s:5:\"image\";s:37:\"2020.08.12.10.20.49-Zhf80Wq-smile.jpg\";s:3:\"url\";s:16:\"shop/songs/smile\";}s:10:\"conditions\";a:0:{}}i:5;a:6:{s:2:\"id\";i:5;s:4:\"name\";s:10:\"Summer Hat\";s:5:\"price\";d:10;s:8:\"quantity\";s:2:\"10\";s:10:\"attributes\";a:2:{s:5:\"image\";s:42:\"2020.08.12.10.00.28-IN7Z2st-summer-hat.jpg\";s:3:\"url\";s:20:\"shop/hats/summer-hat\";}s:10:\"conditions\";a:0:{}}i:11;a:6:{s:2:\"id\";i:11;s:4:\"name\";s:11:\"Black Shirt\";s:5:\"price\";d:7;s:8:\"quantity\";s:2:\"10\";s:10:\"attributes\";a:2:{s:5:\"image\";s:43:\"2020.08.12.10.21.42-sqQkQfe-black-shirt.jpg\";s:3:\"url\";s:23:\"shop/shirts/black-shirt\";}s:10:\"conditions\";a:0:{}}}', '2020-08-14 19:16:30', '2020-08-14 19:16:30'),
@@ -148,7 +150,7 @@ INSERT INTO `orders` (`id`, `user_id`, `total`, `data`, `updated_at`, `created_a
 -- Table structure for table `products`
 --
 
-CREATE TABLE `products` (
+CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL,
   `categorie_id` int(11) NOT NULL,
   `ptitle` varchar(255) NOT NULL,
@@ -166,7 +168,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `categorie_id`, `ptitle`, `particle`, `price`, `pimage`, `purl`, `visibility`, `is_open`, `updated_at`, `created_at`) VALUES
+INSERT IGNORE `products` (`id`, `categorie_id`, `ptitle`, `particle`, `price`, `pimage`, `purl`, `visibility`, `is_open`, `updated_at`, `created_at`) VALUES
 (2, 2, 'Smile', 'The song smile was created following a crisis that Rapley had, Rapley dedicated the song to anyone who feels that something should be encouraged.', '10.00', '2020.08.12.10.20.49-Zhf80Wq-smile.jpg', 'smile', 1, 1, '2020-08-24 10:57:45', '2020-07-07 12:35:55'),
 (3, 2, 'One Morning', 'One Morning is a song created when Rapley woke up with motivation and wrote the song.', '15.70', '2020.08.12.10.20.59-Ukwt1Fk-one-morning.jpg', 'one-morning', 1, 1, '2020-09-05 10:49:19', '2020-07-12 08:09:23'),
 (4, 2, 'A New Adventure', 'Every day for Raffley is a new adventure and as a result Ruffley wrote a song about it.', '13.56', '2020.08.12.10.21.08-pjl1s2d-a-new-adventure.jpg', 'a-new-adventure', 1, 1, '2020-08-14 18:59:34', '2020-07-12 08:13:57'),
@@ -187,7 +189,7 @@ INSERT INTO `products` (`id`, `categorie_id`, `ptitle`, `particle`, `price`, `pi
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -201,7 +203,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_enter`, `updated_at`, `created_at`) VALUES
+INSERT IGNORE `users` (`id`, `name`, `email`, `password`, `is_enter`, `updated_at`, `created_at`) VALUES
 (1, 'admin', 'admin@gmail.com', '$2y$10$gokzaXxErHXtCYTzL6P0NeVrwln2rTrE8cOEOz7vQbi2wzHmtov8G', 1, '2020-08-22 18:46:30', '2020-07-14 10:05:43'),
 (4, 'Avi', 'avi@gmail.com', '$2y$10$WTdNyQlUl6T8RD7vQkfxxu92OXzZ.1yargDbnVxE0CTt3hbI/b9rq', 1, '2020-09-05 13:00:44', '2020-07-14 16:05:43'),
 (7, 'Vered Biton', 'vered@gmail.com', '$2y$10$gokzaXxErHXtCYTzL6P0NeVrwln2rTrE8cOEOz7vQbi2wzHmtov8G', 1, '2020-07-14 16:46:00', '2020-07-14 16:46:00'),
@@ -216,7 +218,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_enter`, `updated_at`
 -- Table structure for table `user_roles`
 --
 
-CREATE TABLE `user_roles` (
+CREATE TABLE IF NOT EXISTS `user_roles` (
   `uid` int(11) NOT NULL,
   `rid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -225,7 +227,7 @@ CREATE TABLE `user_roles` (
 -- Dumping data for table `user_roles`
 --
 
-INSERT INTO `user_roles` (`uid`, `rid`) VALUES
+INSERT IGNORE `user_roles` (`uid`, `rid`) VALUES
 (4, 5),
 (7, 5),
 (1, 7),

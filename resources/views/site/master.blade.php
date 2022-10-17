@@ -34,7 +34,7 @@
   <!-- Main CSS File -->
   <link rel="stylesheet" href="{{ asset('lib/porto/assets/css/style.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('lib/porto/assets/vendor/fontawesome-free/css/all.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/main.css?v=1') }}">
 </head>
 
 <body id="body">

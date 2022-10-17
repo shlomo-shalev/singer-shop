@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePasswordResetsTable extends Migration
+class SetSql extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +14,11 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+        $query = file_get_contents(__DIR__ . '/../../db_backup/singer_shop.sql');
+
+        DB::getPdo()->setAttribute(PDO::ATTR_EMULATE_PREPARES, 0);
+
+        DB::getPdo()->exec($query);
     }
 
     /**
@@ -27,6 +28,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        //
     }
 }

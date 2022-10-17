@@ -1,0 +1,18 @@
+# FROM composer:latest as composer
+
+# ENV PHP_VERSION=7.2.0
+
+# WORKDIR /var/www/html
+
+# COPY composer.json .
+# COPY composer.lock .
+
+# RUN composer --ignore-platform-reqs install
+
+FROM nginx:1.9.9
+
+COPY . .
+
+# COPY --from=composer /var/www/html/vendor .
+
+COPY ./docker/nginx.conf /etc/nginx/nginx.conf
