@@ -6,6 +6,7 @@ services:
       dockerfile: ./docker/dockerfiles/dockerfile.nginx
     volumes:
       - '.:/var/www/html'
+      - './docker/nginx.conf:/etc/nginx/nginx.conf'
     ports:
       - '80:80'
     platform: 'arm64'
@@ -32,9 +33,21 @@ services:
       MYSQL_PASSWORD: '${DB_PASSWORD}'
       MYSQL_ROOT_HOST: '%'
     volumes:
-      - 'mysql_data:/var/www/html'
+      - 'mysql_data:/var/lib/mysql'
       - './docker/create-database.sh:/docker-entrypoint-initdb.d/create-database.sh'
       - './docker/mysql.conf:/etc/my.cnf'
+  phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      PMA_USER: '${DB_USERNAME}'
+      PMA_PASSWORD: '${DB_PASSWORD}'
+    ports:
+      - '8080:80'
+    depends_on:
+      - mysql
+  # utility containers
   artisan:
     build: 
       context: .
@@ -49,12 +62,5 @@ services:
     image: singershop-composer
     volumes:
       - '.:/var/www/html'
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    environment:
-      PMA_HOST: mysql
-      
-    ports:
-      - '8080:80'
 volumes:
   mysql_data:
